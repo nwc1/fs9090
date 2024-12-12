@@ -63,6 +63,7 @@ app.component.html
   </button>
   <p *ngIf="result !== null" class="result-text">Result: {{ result }}</p>
 </div>
+<router-outlet></router-outlet>
 
 
 
