@@ -1,3 +1,4 @@
+BLog.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -180,14 +181,106 @@
         });
     }
 
+
+about.html
     // Initialize the toggle functionality for each blog post
     toggleContent('toggle-btn-ai', 'more-content-ai');
     toggleContent('toggle-btn-ml', 'more-content-ml');
     toggleContent('toggle-btn-dl', 'more-content-dl');
-</script>
+</script>    
+</body>
+</html>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nash Creations Blog</title>
+    <link rel="stylesheet" href="/home/symsc43/Desktop/MSC-2/FS/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 56px;
+        }
+        .navbar {
+            margin-bottom: 20px;
+            background-color: #000b17;
+            
+        }
+        .blog-post {
+            margin-bottom: 40px;
+        }
+        .blog-post img {
+            max-width: 100%;
+            height: 400px;
+        }
+        .footer {
+            padding: 5px;
+            background-color: #000b17;
+        }
+        .navbar-nav .nav-link {
+            margin-right: 15px;
+            color: white;
+        }
+        .text-center, .navbar-brand {
+			color: white;        
+        }
+        .active {
+        	text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
 
-    
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="A1Q2.html">Nash Creations</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="A1Q2.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <img src="ai.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">About Us</h5>
+                    <p class="card-text">Travel and tourism is the largest service industry in India. It provides heritage, cultural, medical, business and sports tourism. The main objective of this sector is to develop and promote tourism, maintain competitiveness of India as tourist destination and improve and expand existing tourism products to ensure employment generation and economic growth. In this section, we provide information about various tourist destinations, modes of travel, accommodation and approved travel agents. .</p>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="text-center">© Nash Creations Blog. All rights reserved.</p>
+            <p class="text-center">
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+	
+    <script src="/home/symsc43/Desktop/MSC-2/FS/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
 </body>
 </html>
 
