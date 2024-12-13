@@ -56,7 +56,7 @@ app.component.html
   </div>
   <div class="input-group">
     <label for="num2">Second Number:</label>
-    <input id="num2" type="number" [(ngModel)]="num2" placeholder="Enter second number" />
+    <input id="num2" type="number" (ngModel)="num2" placeholder="Enter second number" />
   </div>
   <button (click)="addNumbers()" [disabled]="isDisabled" [hidden]="!showButton" class="action-button">
     Add Numbers
