@@ -1,1 +1,57 @@
+from flask import Flask, request, render_template
 
+app = Flask(__name__)
+
+# Route for customer details form
+@app.route('/', methods=['GET', 'POST'])
+def customer_details():
+    if request.method == 'POST':
+        cust_name = request.form['cust_name']
+        email = request.form['email']
+        mobile_no = request.form['mobile_no']
+        address = request.form['address']
+        pincode = request.form['pincode']
+
+        # Store customer details in a dictionary
+        customer = {
+            'name': cust_name,
+            'email': email,
+            'mobile_no': mobile_no,
+            'address': address,
+            'pincode': pincode
+        }
+
+        # Render template with customer details
+        return render_template('customer_details.html', customer=customer)
+    else:
+        # Render empty form
+        return render_template('customer_form.html')
+
+if __name__ == '__main__':
+    app.run()
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Details</title>
+</head>
+<body>
+    <h1>Customer Details</h1>
+    <table border="1">
+        <tr>
+            <th>Customer Name</th>
+            <th>Email</th>
+            <th>Mobile No</th>
+            <th>Address</th>
+            <th>Pincode</th>
+        </tr>
+        <tr>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.mobile_no }}</td>
+            <td>{{ customer.address }}</td>
+            <td>{{ customer.pincode }}</td>
+        </tr>
+    </table>
+</body>
+</html>
