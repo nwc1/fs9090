@@ -1,1 +1,105 @@
+# Import Flask and required modules
+from flask import Flask, render_template, request, make_response, redirect, url_for
 
+# Create a new instance of the Flask class
+app = Flask(__name__)
+
+# Set the secret key for secure cookie signing
+app.secret_key = "your_secret_key"
+
+# Mock user database
+users = {
+    "admin": "admin",
+    "user": "12345678"
+}
+
+# Route for the home page
+@app.route('/')
+def home():
+    return render_template('home.html')
+
+# Route for the login page
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if username in users and users[username] == password:
+            # Create a response object and set the cookie
+            response = make_response(redirect(url_for('protected')))
+            response.set_cookie('username', username)
+            return response
+        else:
+            return render_template('login.html', error='Invalid username or password')
+    return render_template('login.html')
+
+# Route for the protected page
+@app.route('/protected')
+def protected():
+    # Check if the username cookie exists
+    username = request.cookies.get('username')
+    if username:
+        return render_template('protected.html', username=username)
+    else:
+        return redirect(url_for('login'))
+
+# Route for logout
+@app.route('/logout')
+def logout():
+    # Create a response object and delete the cookie
+    response = make_response(redirect(url_for('home')))
+    response.delete_cookie('username')
+    return response
+
+# Run the Flask application
+if __name__ == '__main__':
+    app.run(port=5005)
+
+home.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome!</h1>
+    <a href="{{ url_for('login') }}">Login</a>
+</body>
+</html>
+
+login.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="" method="post">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <input type="submit" value="Login">
+    </form>
+    {% if error %}
+        <p style="color: red">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
+
+protected.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protected</title>
+</head>
+<body>
+    <h1>Welcome, {{ username }}!</h1>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
