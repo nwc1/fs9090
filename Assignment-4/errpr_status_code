@@ -111,3 +111,65 @@ error.html
     <p class="error">{{ error }}</p>
 </body>
 </html>
+
+homepage.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+    <style>
+        body {
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #007bff;
+  text-align: center;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Welcome to the homepage!</h1>
+    <p>Enter username in URL: /hello/<username></p>
+    </form>
+</body>
+</html>
+
+hrllo.html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+}
+h1 {
+  color: #007bff;
+  text-align: center;
+}
+.blink {
+  color: #ff0000;
+  font-size: 36px;
+  text-align: center;
+  animation: blink 1s infinite;
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}</style>
+</head>
+  <body>
+    <h1 class="blink">Hello, {{ username }}!</h1>
+  </body>
+</html>
+
