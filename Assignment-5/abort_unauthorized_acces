@@ -1,1 +1,32 @@
+from flask import Flask, request, abort, render_template
+
+app = Flask(__name__)
+
+# Dummy user database
+users = {"user1": "password1", "user2": "password2"}
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+        
+        if username in users and users[username] == password:
+            return "Login successful!"
+        else:
+            abort(401)  # Unauthorized access
+    else:
+        return render_template("login.html")
+
+if __name__ == "__main__":
+    app.run()
+
+login.html
+<form action="/login" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+    <input type="submit" value="Login">
+</form>
 
